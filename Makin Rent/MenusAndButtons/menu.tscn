@@ -1,0 +1,79 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4k8o182wkxhj"]
+
+[ext_resource type="Texture2D" uid="uid://nwmhdk0n1u6d" path="res://MenusAndButtons/images/Mail.jpg" id="1_1o5mq"]
+[ext_resource type="Script" path="res://MenusAndButtons/Buttons/play_buttons.gd" id="2_5viji"]
+[ext_resource type="Script" path="res://MenusAndButtons/Buttons/quit_button.gd" id="3_ldshn"]
+[ext_resource type="Script" path="res://MenusAndButtons/Buttons/Settings_button.gd" id="3_yrglb"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Container" type="Container" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="Container"]
+custom_minimum_size = Vector2(1150, 650)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_1o5mq")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Container"]
+custom_minimum_size = Vector2(1150, 650)
+layout_mode = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Label" type="Label" parent="Container/VBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_font_sizes/font_size = 100
+text = "Makin Rent"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Container/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Play" type="Button" parent="Container/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Play"
+script = ExtResource("2_5viji")
+
+[node name="Settings" type="Button" parent="Container/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Settings"
+script = ExtResource("3_yrglb")
+
+[node name="Quit" type="Button" parent="Container/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Quit"
+script = ExtResource("3_ldshn")
+
+[connection signal="pressed" from="Container/VBoxContainer/HBoxContainer/Play" to="Container/VBoxContainer/HBoxContainer/Play" method="_on_pressed"]
+[connection signal="pressed" from="Container/VBoxContainer/HBoxContainer/Settings" to="Container/VBoxContainer/HBoxContainer/Settings" method="_on_pressed"]
+[connection signal="pressed" from="Container/VBoxContainer/HBoxContainer/Quit" to="Container/VBoxContainer/HBoxContainer/Quit" method="_on_pressed"]

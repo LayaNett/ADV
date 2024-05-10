@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwa2n8pte477m"]
+
+[ext_resource type="Material" uid="uid://dod15ilfo2wkg" path="res://Assets(texture)/quaternius-simple-nature-pack-ef20f92a4739d6fccdd6a9987dcc6e2ee991429a/addons/quaternius simple nature pack/materials/rock.tres" id="1_autjl"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_cuvx3"]
+
+[node name="rock" type="Area3D"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, -0.217442, 0.325551, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("CylinderShape3D_cuvx3")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+material_override = ExtResource("1_autjl")

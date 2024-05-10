@@ -1,0 +1,106 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpfkicffw4c0p"]
+
+[ext_resource type="Texture2D" uid="uid://db0jncd0vgrb0" path="res://MenusAndButtons/images/gears.jpg" id="1_jo1wr"]
+[ext_resource type="Script" path="res://MenusAndButtons/Buttons/Menu_button.gd" id="1_w5qsq"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Container" type="Container" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Container"]
+custom_minimum_size = Vector2(1150, 650)
+layout_mode = 2
+texture = ExtResource("1_jo1wr")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Container"]
+custom_minimum_size = Vector2(1150, 650)
+layout_mode = 2
+theme_override_constants/separation = 75
+alignment = 1
+
+[node name="Menu" type="Button" parent="Container/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Menu"
+script = ExtResource("1_w5qsq")
+
+[node name="Label" type="Label" parent="Container/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Settings:
+Currently does nothing"
+horizontal_alignment = 1
+
+[node name="volume" type="HBoxContainer" parent="Container/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="max volume" type="Button" parent="Container/VBoxContainer/volume"]
+custom_minimum_size = Vector2(325, 0)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Max Volume"
+
+[node name="music" type="Button" parent="Container/VBoxContainer/volume"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Music"
+
+[node name="world sounds" type="Button" parent="Container/VBoxContainer/volume"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "World Sounds"
+
+[node name="imaging" type="HBoxContainer" parent="Container/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="quality" type="Button" parent="Container/VBoxContainer/imaging"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Quality"
+
+[node name="resolution" type="Button" parent="Container/VBoxContainer/imaging"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Resolution"
+
+[node name="fps" type="Button" parent="Container/VBoxContainer/imaging"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "FPS"
+
+[connection signal="pressed" from="Container/VBoxContainer/Menu" to="Container/VBoxContainer/Menu" method="_on_pressed"]

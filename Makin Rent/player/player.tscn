@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bh60cc3ckt3so"]
+
+[ext_resource type="Script" path="res://player/Player.gd" id="1_5rmk0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h33lp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_42u04"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_5rmk0")
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="."]
+shape = SubResource("BoxShape3D_h33lp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_42u04")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+
+[node name="CameraStand" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
+
+[node name="Camera3D" type="Camera3D" parent="CameraStand"]
+transform = Transform3D(1, 0, 0, 0, 0.962857, 0.270012, 0, -0.270012, 0.962857, 0, 0.98353, 2.20178)

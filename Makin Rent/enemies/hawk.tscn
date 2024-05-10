@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://bnfnyisrrvbf8"]
+
+[ext_resource type="Script" path="res://enemies/hawk.gd" id="1_p3goy"]
+[ext_resource type="Texture2D" uid="uid://ct7p278tcc7o2" path="res://enemies/feather.jpg" id="1_s17uy"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ul8x7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u1ty3"]
+albedo_texture = ExtResource("1_s17uy")
+
+[sub_resource type="Animation" id="Animation_qis5r"]
+resource_name = "flying"
+length = 2.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(2.64972, 1.50641, 0), Vector3(0.431819, 1.50641, 3.54172), Vector3(-0.798892, 1.50641, 2.45584), Vector3(-3.91355, 1.50641, -0.0779521), Vector3(0.93299, 1.50641, -4.03253), Vector3(2.64972, 1.50641, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_s3vmm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.64972, 1.50641, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xkxqa"]
+_data = {
+"RESET": SubResource("Animation_s3vmm"),
+"flying": SubResource("Animation_qis5r")
+}
+
+[node name="Hawk" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.64972, 1.50641, 0)
+script = ExtResource("1_p3goy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.109115, 0, 0)
+shape = SubResource("SphereShape3D_ul8x7")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+material_override = SubResource("StandardMaterial3D_u1ty3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xkxqa")
+}
+
+[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]

@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://bdr6g7cl065a2"]
+
+[ext_resource type="Script" path="res://enemies/bear.gd" id="1_xi043"]
+[ext_resource type="Texture2D" uid="uid://c3e5duu851vf7" path="res://enemies/bear.jpg" id="2_0ea1v"]
+[ext_resource type="AudioStream" uid="uid://ckx34imnjs4rm" path="res://enemies/Bear Growl  Sound Effect  ProSounds.mp3" id="3_fdi8u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lwiee"]
+albedo_texture = ExtResource("2_0ea1v")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fm2xw"]
+
+[sub_resource type="Animation" id="Animation_k0sbk"]
+resource_name = "walking"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(14.5154, 0, 0), Vector3(14.5154, 0, -32.8653), Vector3(25.7919, 0, -32.8653), Vector3(25.7919, 0, -0.28331)]
+}
+
+[sub_resource type="Animation" id="Animation_hl7yf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rcuaj"]
+_data = {
+"RESET": SubResource("Animation_hl7yf"),
+"walking": SubResource("Animation_k0sbk")
+}
+
+[node name="Bear" type="Area3D"]
+script = ExtResource("1_xi043")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(2.1, 0, 0, 0, 1.26, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_lwiee")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.00422, 0, 0, 0, 1.00422, 0, 0, 0, 1.00422, 0, 0, 0)
+shape = SubResource("BoxShape3D_fm2xw")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_fdi8u")
+max_distance = 10.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rcuaj")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]

@@ -1,0 +1,126 @@
+[gd_scene load_steps=3 format=3 uid="uid://76ox5g2xyjyu"]
+
+[ext_resource type="Texture2D" uid="uid://dc8b7t4p0vnfg" path="res://Town/store.JPEG" id="1_212q1"]
+[ext_resource type="Script" path="res://Town/Leave.gd" id="2_7lx0m"]
+
+[node name="House" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(1150, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_212q1")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Welcome" type="Panel" parent="TextureRect/VBoxContainer"]
+custom_minimum_size = Vector2(1150, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="TextureRect/VBoxContainer/Welcome"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 100
+text = "Welcome to my wears!"
+
+[node name="Items" type="VBoxContainer" parent="TextureRect/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="NotSharp" type="HBoxContainer" parent="TextureRect/VBoxContainer/Items"]
+layout_mode = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Bat" type="Button" parent="TextureRect/VBoxContainer/Items/NotSharp"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Bat"
+
+[node name="Taser" type="Button" parent="TextureRect/VBoxContainer/Items/NotSharp"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Taser"
+
+[node name="Paddle" type="Button" parent="TextureRect/VBoxContainer/Items/NotSharp"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Paddle"
+
+[node name="Sharp" type="HBoxContainer" parent="TextureRect/VBoxContainer/Items"]
+layout_mode = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Sword" type="Button" parent="TextureRect/VBoxContainer/Items/Sharp"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Sword"
+
+[node name="Axe" type="Button" parent="TextureRect/VBoxContainer/Items/Sharp"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Axe"
+
+[node name="Knife" type="Button" parent="TextureRect/VBoxContainer/Items/Sharp"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Knife"
+
+[node name="Leave" type="Button" parent="TextureRect/VBoxContainer"]
+custom_minimum_size = Vector2(1150, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 75
+text = "Go Back"
+script = ExtResource("2_7lx0m")
+
+[connection signal="pressed" from="TextureRect/VBoxContainer/Leave" to="TextureRect/VBoxContainer/Leave" method="_on_pressed"]

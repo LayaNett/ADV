@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://deusgg755o2a6"
+path="res://.godot/imported/Clock Town First Day  The Legend of Zelda Majoras Mask.mp3-f9f1a2b7c24f9bdedcd633dd0751c00c.mp3str"
+
+[deps]
+
+source_file="res://Town/Clock Town First Day  The Legend of Zelda Majoras Mask.mp3"
+dest_files=["res://.godot/imported/Clock Town First Day  The Legend of Zelda Majoras Mask.mp3-f9f1a2b7c24f9bdedcd633dd0751c00c.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
